@@ -1,4 +1,6 @@
 'use strict';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 class Workout {
   date = new Date();
@@ -103,8 +105,6 @@ class App {
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
 
     btnReset.addEventListener('click', this._reset);
-
-    containerWorkouts.addEventListener('click', this._delete.bind(this));
   }
   /////////////////////////////////////
 
@@ -244,11 +244,8 @@ class App {
 
   _renderWorkout(workout) {
     let html = `
-    <li class="workout workout--${workout.type}" data-id="${workout.id}">
-                    
+    <li class="workout workout--${workout.type}" data-id="${workout.id}">     
             <h2 class="workout__title">${workout.description} </h2>
-  
-         
             <div class="workout__details">
               <span class="workout__icon">${
                 workout.type === 'running' ? '🏃‍♂' : '🚴‍♀️'
